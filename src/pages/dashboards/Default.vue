@@ -124,7 +124,7 @@ export default {
     return {
       breadcrumbItems: [
         {
-          title: "EKH-UI",
+          title: "KH-UI",
           current: false,
           link: { name: "Home" },
         },

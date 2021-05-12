@@ -101,11 +101,11 @@
               <MenuItems class="mt-2 ml-4 space-y-2 rtl:ml-0 rtl:mr-4">
                 <MenuItem>
                   <a
-                    href="https://github.com/Kamona-WD/kwd-dashboard"
+                    href="https://github.com/KhalidEdaig/vue3-start-dashboard-ui"
                     target="_blank"
                     class="flex items-center text-sm"
                   >
-                    <span>E.Kh-D Dashboard</span>
+                    <span>vue 3 Dashboard ui</span>
                     <svg
                       aria-hidden="true"
                       class="w-4 h-4 ml-3 rtl:ml-0 rtl:mr-3"
@@ -125,11 +125,11 @@
                 </MenuItem>
                 <MenuItem>
                   <a
-                    href="https://github.com/Kamona-WD/starter-dashboard-layout"
+                    href="https://github.com/KhalidEdaig/nuxtjs-start-portfolio"
                     target="_blank"
                     class="flex items-center text-sm"
                   >
-                    <span>Starter Dashboard Layout</span>
+                    <span>Starter nuxt portfolio</span>
                     <svg
                       aria-hidden="true"
                       class="w-4 h-4 ml-3 rtl:ml-0 rtl:mr-3"
@@ -149,11 +149,11 @@
                 </MenuItem>
                 <MenuItem>
                   <a
-                    href="https://github.com/Kamona-WD/starter-dashboard-layout-vue"
+                    href="https://github.com/KhalidEdaig/laravel-solid-architecture"
                     target="_blank"
                     class="flex items-center text-sm"
                   >
-                    <span>Starter Dashboard Layout (Vue)</span>
+                    <span>Starter Clean Architecture laravel</span>
                     <svg
                       aria-hidden="true"
                       class="w-4 h-4 ml-3 rtl:ml-0 rtl:mr-3"
@@ -265,7 +265,7 @@
             />
           </svg>
         </MenuButton>
-        <!-- <transition
+        <transition
           enter-active-class="transition duration-100 ease-out"
           enter-from-class="transform scale-95 opacity-0"
           enter-to-class="transform scale-100 opacity-100"
@@ -319,7 +319,7 @@
               </a>
             </MenuItem>
           </MenuItems>
-        </transition> -->
+        </transition>
       </Menu>
     </nav>
 
@@ -380,13 +380,12 @@
               </a>
             </MenuItem>
             <MenuItem v-slot="{ active }">
-              <a
-                href="#"
+              <button @click="Logout"
                 class="block px-4 py-2 text-sm text-contrast-high"
                 :class="active ? 'bg-gray-100 dark:bg-dark-elevation-1' : ''"
               >
                 Sign out
-              </a>
+              </button>
             </MenuItem>
           </MenuItems>
         </transition>
@@ -399,6 +398,7 @@
 import TheLogo from "@/components/app/global/TheLogo.vue";
 import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/vue";
 import useState from "@/hooks/useState";
+import router from "@/router"
 import {
   SearchIcon,
   MenuAlt1Icon,
@@ -420,8 +420,13 @@ export default {
   },
 setup(){
   const isSearchModalOpen =useState().isSearchModalOpen
+  const Logout=()=>{
+    localStorage.removeItem("user")
+    router.push({name:'Login'});
+  }
   return {
-    isSearchModalOpen
+    isSearchModalOpen,
+    Logout
   }
 }
  

@@ -1,24 +1,24 @@
-import Default from '@/pages/dashboard/dashboards/Default.vue'
-import ProjectManagement from '@/pages/dashboard/dashboards/ProjectManagement.vue'
-import ECommerce from '@/pages/dashboard/dashboards/ECommerce.vue'
+import Default from "@/pages/dashboards/Default.vue";
+import ProjectManagement from "@/pages/dashboards/ProjectManagement.vue";
+import ECommerce from "@/pages/dashboards/ECommerce.vue";
 
 export default [
   {
-    path: '/dashboard/dashboards/default',
-    name: 'DefaultDashboard',
+    path: "/dashboards/default",
+    name: "DefaultDashboard",
     component: Default,
-    meta: { layout: 'DefaultLayout' },
+    meta: { layout: "DefaultLayout" },
   },
   {
-    path: '/dashboard/dashboards/project-management',
-    name: 'ProjectManagementDashboard',
+    path: "/dashboards/project-management",
+    name: "ProjectManagementDashboard",
     component: ProjectManagement,
-    meta: { layout: 'DefaultLayout' },
+    meta: { layout: "DefaultLayout" },
   },
   {
-    path: '/dashboard/dashboards/e-commerce',
-    name: 'E-CommerceDashboard',
+    path: "/dashboards/e-commerce",
+    name: "E-CommerceDashboard",
     component: ECommerce,
-    meta: { layout: 'DefaultLayout' },
+    meta: { layout: "DefaultLayout" },
   },
-]
+];

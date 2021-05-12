@@ -31,7 +31,7 @@
 
 <script>
 import DefaultLayout from "@/layouts/DefaultLayout.vue";
-import TheBreadcrumb from "../../../components/app/global/TheBreadcrumb.vue";
+import TheBreadcrumb from "@/components/app/global/TheBreadcrumb.vue";
 export default {
   name: "ProjectManagmentPage",
   components: {
@@ -42,7 +42,7 @@ export default {
     return {
       breadcrumbItems: [
         {
-          title: "EKH-UI",
+          title: "KH-UI",
           current: false,
           link: { name: "Home" },
         },

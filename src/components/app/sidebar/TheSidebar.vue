@@ -37,21 +37,21 @@
       </div>
 
       <!-- Footer -->
-     <!--  <div class="flex-shrink-0 p-4">
+      <div class="flex-shrink-0 p-4">
         <button class="w-full btn btn-md btn-primary">Upgrade to pro</button>
-      </div> -->
+      </div>
     </nav>
   </div>
 </template>
 
 <script>
-import { useRouter } from "vue-router";
 import useState from "@/hooks/useState";
 import TheMiniBar from "./TheMiniBar.vue";
 import TheLogo from "@/components/app/global/TheLogo.vue";
 import TheBackdrop from "@/components/app/global/TheBackdrop.vue";
 //import TheSidebarLink from './TheSidebarLink.vue'
 import TheSidebarDropdown from "./TheSidebarDropdown.vue";
+import { links } from "@/mixins/navigations";
 export default {
   name: "TheSidebarComponent",
   components: {
@@ -61,61 +61,12 @@ export default {
     //TheSidebarLink,
     TheSidebarDropdown,
   },
- 
+
   setup() {
-    const isSidebarOpen =useState().isSidebarOpen
-    const isCurrent = (path = "") => {
-      return useRouter().currentRoute.value.path.startsWith(`/${path}`);
-    };
-
-    const isActive = (name = "") => {
-      return useRouter().currentRoute.value.name == name;
-    };
-
-    const links = [
-      {
-        title: "Dashboards",
-        isCurrent: isCurrent("dashboard/dashboards"),
-        subLinks: [
-          {
-            title: "Default",
-            isActive: isActive("DefaultDashboard"),
-            link: { name: "DefaultDashboard" },
-          },
-          {
-            title: "Project Management",
-            isActive: isActive("ProjectManagementDashboard"),
-            link: { name: "ProjectManagementDashboard" },
-          },
-          {
-            title: "E-Commerce",
-            isActive: isActive("E-CommerceDashboard"),
-            link: { name: "E-CommerceDashboard" },
-          },
-        ],
-        svgPath:
-          "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6",
-      },
-
-      {
-        title: "Pages",
-        isCurrent: isCurrent("dashboard/pages"),
-        subLinks: [
-          {
-            title: "Blank",
-            isActive: isActive("Blank"),
-            link: { name: "Blank" },
-          },
-        ],
-        svgPath:
-          "M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z",
-      },
-    ];
+    const isSidebarOpen = useState().isSidebarOpen;
     return {
       links,
-      isActive,
-      isCurrent,
-      isSidebarOpen
+      isSidebarOpen,
     };
   },
 };

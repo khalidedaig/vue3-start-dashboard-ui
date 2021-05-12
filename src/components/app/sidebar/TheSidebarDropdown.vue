@@ -1,6 +1,6 @@
 <template>
   <div class="relative">
-    <Disclosure v-slot="{ open }" :defaultOpen="link.isCurrent">
+    <Disclosure v-slot="{ open }" :defaultOpen="isCurrent(link.isCurrent)">
       <DisclosureButton
         class="flex items-center w-full rounded-md group hover:bg-primary hover:text-white focus:outline-none"
         :class="
@@ -53,7 +53,7 @@
                   :to="subLink.link"
                   class="ml-12 transition-colors hover:text-light-text-contrast-high dark:hover:text-dark-text-contrast-high rtl:mr-12 rtl:ml-0"
                   :class="
-                    subLink.isActive
+                    isActive(subLink.isActive)
                       ? 'text-light-text-contrast-high dark:text-dark-text-contrast-high'
                       : 'text-light-text-contrast-low dark:text-dark-text-contrast-medium'
                   "
@@ -72,6 +72,7 @@
 <script>
 import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue";
 import { ChevronDownIcon } from "@heroicons/vue/outline";
+import { useRouter } from 'vue-router';
 export default {
   name: "TheSidebarDropdowComponent",
 
@@ -88,6 +89,14 @@ export default {
     },
   },
   setup(props) {
+    const isCurrent = (path = "") => {
+      return useRouter().currentRoute.value.path.startsWith(`/${path}`);
+    };
+
+    const isActive = (name = "") => {
+      return useRouter().currentRoute.value.name == name;
+    };
+    
     const beforeEnter = (el) => {
       el.style.maxHeight = 0;
       el.transitionDuration = `${el.scrollHeight}ms`;
@@ -108,6 +117,8 @@ export default {
       enter,
       beforeLeave,
       leave,
+      isCurrent,
+      isActive
     };
   },
 };

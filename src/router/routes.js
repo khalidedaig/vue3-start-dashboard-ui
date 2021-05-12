@@ -1,19 +1,28 @@
-import Login from '@/pages/auth/Login.vue'
-import Home from '@/pages/Home.vue'
-import pages from './pages'
-import dashboards from './dashboards'
+import Login from "@/pages/auth/Login.vue";
+import Root from "@/pages/Root.vue";
+import Home from "@/pages/Home.vue";
+import pages from "./pages";
+import dashboards from "./dashboards";
 
 export default [
   {
-    path: '/login',
-    name: 'Login',
+    path: "/login",
+    name: "Login",
     component: Login,
   },
   {
-    name: 'Home',
-    path: '/',
-    component: Home,
-  },
-  ...dashboards,
-  ...pages,
-]
+    path:"/",
+    name:"Root",
+    component:Root,
+    meta: { requiresAuth: true },
+    children:[
+      { 
+        path: "home",
+        name: "Home",
+        component: Home,
+      },
+      ...dashboards,
+      ...pages,
+    ]
+  }
+];
