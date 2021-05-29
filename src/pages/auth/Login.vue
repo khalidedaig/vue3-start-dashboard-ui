@@ -119,7 +119,7 @@
               <div>
                 <a
                   href="#"
-                  class="w-full inline-flex items-center justify-center space-x-2 btn btn-md btn-black  dark:btn-white"
+                  class="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
                 >
                   <span class="sr-only">Sign in with Facebook</span>
                   <svg
@@ -192,8 +192,8 @@ export default {
 
   setup() {
     const user = reactive({
-      email: "",
-      password: "",
+      email: "admin@admin.com",
+      password: "password",
     });
     const generate_token = (length) => {
       let a = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890".split(
